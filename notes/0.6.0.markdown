@@ -1,0 +1,25 @@
+### Changes
+
+* Replace the type parameter `P` in `RefType#unwrap` with an
+  existential type. ([#192])
+
+### Updates
+
+* Update `refined-scalacheck` to ScalaCheck 1.13.3. ([#128], [#210])
+* Update `refined-scalaz` to Scalaz 7.2.6. ([#198])
+* Update `refined-scodec` to scodec 1.10.3. ([#187], [#212])
+* Update Scala.js to 0.6.13. ([#194], [#197], [#206])
+* Update shapeless to 2.3.2. ([#196])
+
+[#128]: https://github.com/fthomas/refined/pull/128
+[#187]: https://github.com/fthomas/refined/pull/187
+[#192]: https://github.com/fthomas/refined/pull/192
+[#194]: https://github.com/fthomas/refined/pull/194
+[#196]: https://github.com/fthomas/refined/pull/196
+[#197]: https://github.com/fthomas/refined/pull/197
+[#198]: https://github.com/fthomas/refined/pull/198
+[#206]: https://github.com/fthomas/refined/pull/206
+[#210]: https://github.com/fthomas/refined/pull/210
+[#212]: https://github.com/fthomas/refined/pull/212
+
+Released on 2016-10-20

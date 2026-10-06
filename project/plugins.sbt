@@ -1,0 +1,27 @@
+ThisBuild / evictionErrorLevel := Level.Info
+
+addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.13.2")
+
+addSbtPlugin("com.github.sbt" % "sbt-ci-release" % "1.12.1")
+
+addSbtPlugin("com.github.sbt" % "sbt-git" % "2.2.0")
+
+addSbtPlugin("com.typesafe" % "sbt-mima-plugin" % "1.2.1")
+
+addSbtPlugin("io.github.sbt-doctest" % "sbt-doctest" % "0.13.2")
+
+addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "1.4.0")
+
+addSbtPlugin("org.portable-scala" % "sbt-scala-native-crossproject" % "1.4.0")
+
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.22.0")
+
+addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.5.12")
+
+addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.6.2")
+
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "2.4.4")
+
+addSbtPlugin("org.typelevel" % "sbt-typelevel-mergify" % "0.8.7")
+
+addSbtPlugin("pl.project13.scala" % "sbt-jmh" % "0.4.8")

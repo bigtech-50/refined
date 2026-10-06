@@ -1,0 +1,43 @@
+### Changes
+
+* Deprecate `refine` and `refineLit` in favor of the new `refineT` and
+  `refineMT` (where `T` stands for tag/`@@` and `M` for macro). In addition,
+  there are two other variants of these functions, `refineV` and `refineMV`,
+  that use the newly added `Refined` value class instead of `@@`. The advantages
+  of `Refined` is that it can be used in combination with
+  [type aliases][type_aliases].
+* Add string utility functions to create statically checked regular expressions,
+  URIs, URLs, and UUIDs. A detailed description of these functions can be found
+  [here][utils]. ([#35], [#38])
+* Lift the restriction to refine only literal values at compile-time if a
+  `Predicate` is constant (i.e. it ignores its argument when calling `isValid`).
+  Some examples of constant predicates are `True` or `False` or the newly added
+  `ConstructorNames` and `FieldNames` predicates. Some examples of the last two
+  predicates can be found [here][ctorfieldnames]. ([#26])
+* Enable tests in the Scala.js build. ([#29])
+* Remove `refine` from `Predicate` since the purpose of `Predicate` is
+  to check whether a value conforms to a type-level predicate. Refining
+  the type of such value is a different concern. ([#31])
+* Add inference rules for numeric singleton types to `shapeless.Nat`.
+
+### New predicates
+
+[`generic`](https://github.com/fthomas/refined/blob/v0.2.0/shared/src/main/scala/eu/timepit/refined/generic.scala)
+
+* `ConstructorNames[P]`: checks if the constructor names of a sum type satisfy `P`
+* `FieldNames[P]`: checks if the field names of a product type satisfy `P`
+
+[`string`](https://github.com/fthomas/refined/blob/v0.2.0/shared/src/main/scala/eu/timepit/refined/string.scala)
+
+* `Uuid`: checks if a `String` is a valid UUID
+
+[#26]: https://github.com/fthomas/refined/issues/26
+[#29]: https://github.com/fthomas/refined/issues/29
+[#31]: https://github.com/fthomas/refined/issues/31
+[#35]: https://github.com/fthomas/refined/issues/35
+[#38]: https://github.com/fthomas/refined/issues/38
+[ctorfieldnames]: https://github.com/fthomas/refined/blob/v0.2.0/docs/ctorfieldnames.md
+[type_aliases]:   https://github.com/fthomas/refined/blob/v0.2.0/docs/type_aliases.md
+[utils]:          https://github.com/fthomas/refined/blob/v0.2.0/docs/utils.md
+
+Released on 2015-07-27

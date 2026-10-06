@@ -1,0 +1,43 @@
+### Changes
+
+* Drop `case` in `Refined` to prevent the creation of synthetic `apply`
+  and `copy` methods which subvert the private constructor.
+  Thanks to Dale Wijnand! ([#160])
+* Make parameter types of function literals in the `Eval` predicate
+  optional. This allows to write
+
+  ```scala
+  val x: Int Refined Eval[W.`"x => x > 0"`.T] = 1
+  ```
+  instead of
+  ```scala
+  val y: Int Refined Eval[W.`"(x: Int) => x > 0"`.T] = 1
+  ```
+  ([#153])
+* Renamed `RefinePartiallyApplied.force` to `unsafeFrom` and add
+  `ApplyRefPartiallyApplied.unsafeFrom`. ([#175])
+* Add `Arbitrary` instance for `Equal`. ([#170])
+* Add `scalaz.Equal` and `scalaz.Show` instances for refined types.
+  These instances use the respective instances of the base types.
+  ([#179])
+* Update the documentation of the `numeric` module.
+  Thanks to John-Michael Reed!
+
+### Updates
+
+* Update to Scala.js 0.6.10. ([#155], [#180])
+* Update to shapeless 2.3.1. ([#165])
+* Update `refined-scalaz` to Scalaz 7.2.4. ([#172], [#178])
+
+[#153]: https://github.com/fthomas/refined/pull/153
+[#155]: https://github.com/fthomas/refined/pull/155
+[#160]: https://github.com/fthomas/refined/pull/160
+[#165]: https://github.com/fthomas/refined/pull/165
+[#170]: https://github.com/fthomas/refined/pull/170
+[#172]: https://github.com/fthomas/refined/pull/172
+[#175]: https://github.com/fthomas/refined/pull/175
+[#178]: https://github.com/fthomas/refined/pull/178
+[#179]: https://github.com/fthomas/refined/pull/179
+[#180]: https://github.com/fthomas/refined/pull/180
+
+Released on 2016-06-17

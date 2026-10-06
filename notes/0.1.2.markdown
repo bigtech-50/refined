@@ -1,0 +1,14 @@
+### Changes
+
+* Add `refine` function to the `Predicate` type class.
+* Add `Predicate.fromPartial` for creating a `Predicate` from a partial function.
+* Update to Scala 2.11.7 and Scala.js 0.6.4.
+
+### New predicates
+
+[`string`](https://github.com/fthomas/refined/blob/v0.1.2/shared/src/main/scala/eu/timepit/refined/string.scala)
+
+* `Uri`: checks if a `String` is a valid URI
+* `Url`: checks if a `String` is a valid URL
+
+Released on 2015-07-06

@@ -1,0 +1,25 @@
+### Changes
+
+* Add aliases for standard refined types like
+  `type PosInt = Int Refined Positive` or
+  `type NegInt = Int Refined Negative` to the
+  `eu.timepit.refined.types` package. The date and time related type
+  aliases haven been moved from `util.time` to the `types.time` package.
+  ([#236][#236], [#240][#240], [#249][#249])
+* Add `Cogen` instance for any refined type to `refined-scalacheck`.
+  ([#244][#244], [#248][#248])
+
+### Updates
+
+* Update `refined-pureconfig` to [PureConfig][pureconfig] 0.5.0.
+  ([#245][#245])
+
+[#236]: https://github.com/fthomas/refined/pull/236
+[#240]: https://github.com/fthomas/refined/pull/240
+[#244]: https://github.com/fthomas/refined/issues/244
+[#245]: https://github.com/fthomas/refined/pull/245
+[#248]: https://github.com/fthomas/refined/pull/248
+[#249]: https://github.com/fthomas/refined/pull/249
+[pureconfig]: https://github.com/melrief/pureconfig
+
+Released on 2017-01-12

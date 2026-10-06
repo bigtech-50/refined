@@ -1,0 +1,51 @@
+### Changes
+
+* Added `Predicate` instances for numeric predicates that take singleton
+  types as arguments. For example ``refineLit[Less[W.`-12.3`.T]](-12.5)``
+  checks at compile time that -12.5 is less than -12.3.
+
+* `refine` and `refineLit` are now regular functions and not `object`s
+  with an `apply` method.
+
+* Updated to shapeless 2.2.0.
+
+### Bug fixes
+
+* `refineLit` works now with predicates that contain singleton types.
+  For example ``refineLit[MatchesRegex[W.`"[0-9]+"`.T](<string literal>)``
+  checks at compile-time if `<string literal>` matches the regular
+  expression "[0-9]+". ([#2])
+
+* Worked around a strange initialization bug in `refineLit`. ([#3])
+
+### New predicates
+
+[`boolean`](https://github.com/fthomas/refined/blob/v0.0.3/src/main/scala/eu/timepit/refined/boolean.scala)
+
+* `Xor[A, B]`: exclusive disjunction of the predicates `A` and `B`
+* `OneOf[PS]`: exclusive disjunction of all predicates in `PS`
+
+[`char`](https://github.com/fthomas/refined/blob/v0.0.3/src/main/scala/eu/timepit/refined/char.scala)
+
+* `LetterOrDigit`: checks if a `Char` is a letter or digit
+
+[`collection`](https://github.com/fthomas/refined/blob/v0.0.3/src/main/scala/eu/timepit/refined/collection.scala)
+
+* `Contains[U]`: checks if a `TraversableOnce` contains a value equal to `U`
+* `Head[P]`: checks if the predicate `P` holds for the first element of
+  a `Traversable`
+* `Index[N, P]`: checks if the predicate `P` holds for the element at
+  index `N` of a sequence
+* `Last[P]`: checks if the predicate `P` holds for the last element of
+  a `Traversable`
+
+[`generic`](https://github.com/fthomas/refined/blob/v0.0.3/src/main/scala/eu/timepit/refined/generic.scala)
+
+* `IsNull`:  checks if a value is `null`
+* `NonNull`: checks if a value is not `null`
+
+
+[#2]: https://github.com/fthomas/refined/issues/2
+[#3]: https://github.com/fthomas/refined/issues/3
+
+Released on 2015-05-31

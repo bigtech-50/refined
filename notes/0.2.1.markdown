@@ -1,0 +1,14 @@
+### Changes
+
+* Improve error messages of predicates created from partial functions.
+  (This includes `Regex`, `Url`, `Xml`, and more.)
+* Add `unwrap` function to the `internal.Wrapper` type class.
+
+### New predicates
+
+[`string`](https://github.com/fthomas/refined/blob/v0.2.1/shared/src/main/scala/eu/timepit/refined/string.scala)
+
+* `Xml`: checks if a `String` is valid XML
+* `XPath`: checks if a `String` is a valid XPath expression
+
+Released on 2015-08-06

@@ -1,0 +1,22 @@
+### Performance improvements
+
+* Avoid calling `eval` in refine and infer macros for known `RefType`
+  instances. This reduces compilation times by roughly 26% for all
+  compile-time refinements with common predicates.
+  ([#332][#332], [#333][#333])
+* Avoid calling `eval` in refine macros for a few `Validate` instances.
+  In combination with the above change, this can reduce compilation times
+  up to 67%. ([#334][#334])
+* Inline `Validate.instance` in the definition of `Validate.fromPredicate`.
+  This makes `refineV[Positive](x)` for instance 25% faster. ([#335][#335])
+* Optimize `Validate` instances that are built with `Validate.fromPartial`.
+  ([#336][#336])
+
+
+[#332]: https://github.com/fthomas/refined/pull/332
+[#333]: https://github.com/fthomas/refined/pull/333
+[#334]: https://github.com/fthomas/refined/pull/334
+[#335]: https://github.com/fthomas/refined/pull/335
+[#336]: https://github.com/fthomas/refined/pull/336
+
+Released on 2017-10-04

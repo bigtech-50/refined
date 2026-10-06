@@ -1,0 +1,61 @@
+### Changes
+
+* Added inference rules to enable automatic conversions between different
+  refined types (in the absent of any subtype relation). For example, a value
+  of type `Int @@ Greater[_5]` can be safely converted to an `Int @@ Positive`,
+  but the reverse is not true:
+
+  ```scala
+  scala> refineLit[Greater[_5]](10)
+  res1: Int @@ Greater[_5] = 10
+
+  scala> res1: Int @@ Positive
+  res2: Int @@ Positive = 10
+
+  scala> res2: Int @@ Greater[_5]
+  <console>:42: error: invalid inference: Positive ==> Greater[_5]
+                res2: Int @@ Greater[_5]
+                ^
+  ```
+  Note that these conversions need to be enabled with an import:
+  `import eu.timepit.refined.implicits._`
+* Added an implicit version of `refineLit` to the `implicits` object.
+  This allows to write
+
+  ```scala
+  val a: Char @@ Digit = '4'
+  ```
+  instead of
+  ```scala
+  val a: Char @@ Digit = refineLit('4')
+  ```
+* Made `Predicate` serializable.
+* Removed `IsNull` and `NonNull` predicates since they often caused ambiguous
+  implicit errors and Scala has better means to handle `null` values.
+* Updated to shapeless 2.2.2. ([#8], [#13])
+
+### Bug fixes
+
+* `refineLit` always required a prior import of `shapeless.tag.@@`. ([9f6d7d9])
+* Changed build to multi-project build so that tut-core is not added as
+  dependency to refined. ([#17])
+
+### New predicates
+
+[`numeric`](https://github.com/fthomas/refined/blob/v0.1.0/src/main/scala/eu/timepit/refined/numeric.scala)
+
+* `NonPositive`: checks if a numeric value is zero or negative
+* `NonNegative`: checks if a numeric value is zero or positive
+
+[`string`](https://github.com/fthomas/refined/blob/v0.1.0/src/main/scala/eu/timepit/refined/string.scala)
+
+* `EndsWith[S]`: checks if a `String` ends with the suffix `S`
+* `Regex`: checks if a `String` is a valid regular expression
+* `StartsWith[S]`: checks if a `String` starts with the prefix `S`
+
+[#8]: https://github.com/fthomas/refined/issues/8
+[#13]: https://github.com/fthomas/refined/issues/13
+[#17]: https://github.com/fthomas/refined/issues/17
+[9f6d7d9]: https://github.com/fthomas/refined/commit/9f6d7d9ba22d20eee0a2fe2f721cde30fb4f94f9
+
+Released on 2015-06-20
